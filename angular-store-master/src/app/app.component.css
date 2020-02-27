@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 p {
   font-family: Lato;
 }
@@ -6,4 +7,14 @@ p {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
+=======
+p {
+  font-family: Lato;
+}
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+>>>>>>> 8cc79e60866d57fc08ede5cd734f46cb54a1cde8
 */

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition>
+            <h:form>
+                <h1 style="text-align: center;">CHECKOUT CART</h1>
+                <table align="center">
+                    <tr><th>Item</th><th>Name</th><th>Price</th><th>Remove</th></tr>
+                    <c:forEach items="#{function.cart.cart}" var="items">
+                        <tr>
+                            <td><img src="#{items.image}" style="width: 50px; height: 50px;"/></td>
+                            <td><h:outputText value="#{items.name}"/></td>
+                            <td><h:outputText value="#{items.price}"/></td>
+                            <td><h:commandLink value="Delete" action="#{function.remove(items)}"/></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+                <table align="center">
+                    <tr><th>Cart Total:</th><td><h:outputText value="#{function.totalCart()}"/></td></tr>
+                </table>
+                <div align="center"><h:commandButton value="Checkout" action="#{function.checkout()}"/></div>
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+

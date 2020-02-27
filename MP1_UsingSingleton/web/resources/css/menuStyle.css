@@ -1,0 +1,35 @@
+#menu {
+    white-space: nowrap;
+    height: 28px;
+    width:100%;
+    background: #fff url("#{resource['images/menu.png']}") bottom center ;
+    margin-bottom: 5px;
+}
+
+#menu ul {
+    margin: 0;
+    padding: 0;
+    list-style:none;
+    float:left;
+}
+
+#menu li {
+    float: left;
+    margin: 0 3px 0 3px;
+    padding: 0;
+    background: transparent;
+}
+
+#menu a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    float:left;
+    display:block;
+    height: 26px;
+    line-height: 24px;
+    padding: 2px 10px 0 10px;
+    color: #cccc00;
+    text-decoration: none;
+    background: transparent;
+}

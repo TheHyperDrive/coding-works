@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition>
+        <h:form>
+            UserName:
+            <h:inputText class="inputs" id="email" required="true" label="email" size="20"
+                         requiredMessage="Please enter your email address."
+                         validatorMessage="Invalid email format"
+                         value="#{function.email}">
+                <f:validateRegex 
+                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+            </h:inputText>
+            Password:&nbsp;
+            <h:inputSecret class="inputs" value="#{function.password}"/>
+            <h:commandButton class="lbutton" value="Login" action="#{function.loginToSite()}"/>
+        </h:form>
+    </ui:composition>
+</html>
+

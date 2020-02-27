@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+    <h:body>
+        
+        <h:form> 
+
+            <h:panelGrid columns="1" style="padding-bottom: 480px;">
+                <p:growl id="messages" showDetail="true" />
+
+                <p:commandLink 
+                    id="computerLink" value="Computers"  styleClass="hover" style="text-decoration: none; color: yellow; font-size: 2em;"/>
+
+                <p:commandLink 
+                    id="phoneLink" value="Mobile"  styleClass="hover" style="text-decoration: none; color: yellow;  font-size: 2em;"/>
+
+                <p:tieredMenu 
+                    overlay="true" 
+                    trigger="computerLink" 
+                    my="left top" 
+                    at="left bottom" style="width:200px; border: white; padding: 0px;" 
+                    model="#{initBean.compMenu}">
+
+                </p:tieredMenu>
+
+
+                <p:tieredMenu 
+                    overlay="true" 
+                    trigger="phoneLink" 
+                    my="left top" 
+                    at="left bottom" style="width:200px; border: white; padding: 0px;"
+                    model="#{initBean.mobileMenu}">
+
+                </p:tieredMenu>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

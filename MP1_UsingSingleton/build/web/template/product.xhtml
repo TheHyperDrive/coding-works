@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+        <ui:composition>
+            <ui:param name="image" value="#{function.currentItem.image}"/>
+                <style type="text/css">
+                    * {margin: 0; padding: 0;}
+                    .magnify {margin: 50px auto; position: relative;}
+
+                    /*Lets create the magnifying glass*/
+                    .large {
+                        width: 150px; height: 150px;
+                        position: absolute;
+                        border-radius: 100%;
+
+                        /*Multiple box shadows to achieve the glass effect*/
+                        box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85), 
+                            0 0 7px 7px rgba(0, 0, 0, 0.25), 
+                            inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+
+                        /*Lets load up the large image first*/
+                        background: url('#{image}') no-repeat;
+
+                        /*hide the glass by default*/
+                        display: none;
+                    }
+
+                    /*To solve overlap bug at the edges during magnification*/
+                    .small { 
+                        display: block;
+                        max-width: 175px;
+                        max-height: 175px;
+                        object-fit: cover;
+                    }
+                </style>
+                <h:outputScript name="js/jquery-3.4.1.js"/>
+                <h:outputScript name="js/zoom.js"/>
+                <hr/>
+                <h:form>
+                    <h1 style="font-style: oblique; font-weight: bold; text-align: center;"><h:outputText value="#{function.currentItem.name}"/></h1>
+                    <h:panelGrid columns="2" style="margin-left: auto; margin-right: auto; background: none;">
+                        <p:panel style="border: none; background: none;">
+                            <div class="magnify">
+
+                                <!-- This is the magnifying glass which will contain the original/large version -->
+                                <div class="large"></div>
+
+                                <!-- This is the small image -->
+                                <img class="small" src="#{image}"/>
+
+                            </div>
+                        </p:panel>
+                        <p:panel style="border: none; width: 400px; background: none; font-weight: bold;">
+                            <h:outputText  style="width: 60%;" value="#{function.currentItem.description}"/>
+                        </p:panel>
+                    </h:panelGrid>
+                    <h:panelGrid columns="3" style="margin-left: auto; margin-right: auto;">
+                        <p:panel style="border: none; background: none;"><h:outputText value="$#{function.currentItem.price}" style="font-size: 2em;"/></p:panel>
+                        <p:panel style="border: none; background: none;"><h:outputText value="Stock Left: #{function.currentItem.qty}"/></p:panel>
+                        <p:panel style="border: none; background: none;"><h:commandButton value="Put in Cart" action="#{function.buy()}"/></p:panel>
+                    </h:panelGrid>
+                    <p style="text-align: center; color: green;"><h:outputText value=""/></p>
+                    <h:panelGrid columns="2" style="margin-left: auto; margin-right: auto;">
+                        <p:panel style="border: none; background: none;"><h:commandButton value="Previous Item" action="#{function.previousProduct()}"/></p:panel>
+                        <p:panel style="border: none; background: none;"><h:commandButton value="Next Item" action="#{function.nextProduct()}"/></p:panel>
+                    </h:panelGrid>
+                </h:form>
+                <hr/>
+        </ui:composition>
+    </h:body>
+</html>

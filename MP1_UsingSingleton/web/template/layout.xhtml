@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>    
+        <h:outputStylesheet name="#{title eq false ? 'css/dummy.css' : 'css/titleStyle.css'}"/>  
+        <h:outputStylesheet name="#{loginsearch eq false ? 'css/dummy.css' : 'css/login_and_searchStyle.css'}"/>
+        <h:outputStylesheet name="#{top eq false ? 'css/dummy.css' : 'css/topStyle.css'}"/>
+        <h:outputStylesheet name="#{bottom eq false ? 'css/dummy.css' : 'css/bottomStyle.css'}"/>
+        <h:outputStylesheet name="#{left eq false ? 'css/dummy.css' : 'css/leftStyle.css'}"/>  
+        <h:outputStylesheet name="#{right eq false ? 'css/dummy.css' : 'css/rightStyle.css'}"/>  
+        <h:outputStylesheet name="#{content eq false ? 'css/dummy.css' : 'css/contentStyle.css'}"/>  
+        <h:outputStylesheet name="#{login eq false ? 'css/dummy.css' : 'css/loginStyle.css'}"/>
+        <h:outputStylesheet name="#{search eq false ? 'css/dummy.css' : 'css/searchStyle.css'}"/>
+        <h:outputStylesheet name="#{menu eq false ? 'css/dummy.css' : 'css/menuStyle.css'}"/>
+        <h:outputStylesheet name="#{logo eq false ? 'css/dummy.css' : 'css/logoStyle.css'}"/>
+        <title>Electronics Emporium</title>
+    </h:head>
+
+    <h:body>        
+        <div id="wrapper" style="width: #{empty wrapperWidth ? '100%' : wrapperWidth}">
+            <ui:fragment rendered="#{empty title ? true : title}">                
+                <div id="title">
+                    <ui:insert name="title">
+                        <ui:include src="/template/default/titleDefault.xhtml" />
+                    </ui:insert>
+                </div>     
+            </ui:fragment>
+            <ui:fragment rendered="#{empty loginsearch ? true : loginsearch}">
+                <div id="login_and_search">
+                    <ui:fragment rendered="#{empty login ? true : login}">
+                        <div id="login">
+                            <ui:insert name="login">
+                                <ui:include src="/template/default/loginDefault.xhtml" />
+                            </ui:insert>
+                        </div>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{empty search ? true : search}">
+                        <div id="search">
+                            <ui:insert name="search">
+                                <ui:include src="/template/default/searchDefault.xhtml" />
+                            </ui:insert>
+                        </div>
+                    </ui:fragment>
+                </div>
+            </ui:fragment>
+            <ui:fragment rendered="#{empty top ? true : top}">
+                <div id="logo_and_top" style="overflow:auto;">
+                    <ui:fragment rendered="#{empty logo ? true : logo}">
+                        <div id="logo">
+                            <ui:insert name="logo">
+                                <ui:include src="/template/default/logoDefault.xhtml" />
+                            </ui:insert>
+                        </div>
+                    </ui:fragment>
+                    <div id="top">
+                        <ui:insert name="top">
+                            <ui:include src="/template/default/topDefault.xhtml" />
+                        </ui:insert>
+                    </div>
+                </div>
+            </ui:fragment>        
+            <ui:fragment rendered="#{empty menu ? true : menu}">
+                <div id="menu">
+                    <ui:insert name="menu">
+                        <ui:include src="/template/default/menuDefault.xhtml" />
+                    </ui:insert>
+                </div>
+            </ui:fragment>
+            <div id="main" style="overflow:auto;">
+                <ui:fragment rendered="#{empty left ? true : left}">
+                    <div id="left" style="width: #{empty leftWidth ? '150px' : leftWidth}">
+                        <ui:insert name="left">
+                            <ui:include src="/template/default/leftDefault.xhtml" />
+                        </ui:insert>
+                    </div>
+                </ui:fragment>
+                <ui:fragment rendered="#{empty right ? true : right}">
+                    <div id="right" style="width: #{empty rightWidth ? '150px' : rightWidth}">
+                        <ui:insert name="right">
+                            <ui:include src="/template/default/rightDefault.xhtml" />
+                        </ui:insert>
+                    </div>
+                </ui:fragment>
+                <div id="content">
+                    <ui:insert name="content">
+                        <ui:include src="/template/default/contentDefault.xhtml" />
+                    </ui:insert>
+                </div>
+            </div>
+            <ui:fragment rendered="#{empty bottom ? true : bottom}">
+                <div id="bottom">
+                    <ui:insert name="bottom">
+                        <ui:include src="/template/default/bottomDefault.xhtml" />
+                    </ui:insert>
+                </div>
+            </ui:fragment>
+        </div>
+    </h:body>
+</html>

@@ -1,0 +1,50 @@
+#wrapper {
+    margin-left:auto;
+    margin-right:auto;    	
+}
+
+#title {
+    position: relative;   
+    margin: 1px 0px 0px 0px;        
+}
+
+#login_and_search {
+    position: relative;    
+    margin: 0px 0px 5px 0px;    
+}
+
+#login {    
+    float: left;      
+    position: relative;    
+}
+
+#search {  
+    float: right;    
+    position: relative;   
+}
+
+#top {
+    position: relative;
+    overflow: hidden; 
+}
+
+#bottom {
+    position: relative;   
+}
+
+#left {
+    float: left;      
+}
+
+#logo {
+    float: left;          
+}
+
+#right {
+    float: right;       
+}
+
+#content {      
+    overflow: hidden;    
+}
+

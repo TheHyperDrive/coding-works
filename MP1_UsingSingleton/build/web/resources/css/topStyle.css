@@ -1,0 +1,13 @@
+#top {        
+    color: #00FF00;
+    font-family: 'Arial Black', Gadget, sans-serif;
+    font-size: 15px;    
+    text-align: center;
+    height:101px;
+    text-shadow: 0 0 4px rgb(0, 0, 0), 
+		     0 -5px 4px rgb(121, 123, 255), 
+		     2px -10px 6px rgb(59, 111, 255), 
+		     -2px -15px 11px rgb(35, 3, 251), 
+		     2px -25px 18px rgb(116, 34, 255);
+    background-image:url("#{resource['images/siteheader.png']}");
+}

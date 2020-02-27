@@ -1,0 +1,31 @@
+#title {    
+    text-shadow: 0 0 5px rgb(255, 255, 255),
+	      	     0 0 10px rgb(255, 255, 255),
+		     0 0 15px rgb(255, 255, 255), 
+		     0 0 20px rgb(0, 153, 255), 
+		     0 0 30px rgb(0, 153, 255), 
+		     0 0 40px rgb(0, 153, 255), 
+		     0 0 50px rgb(0, 153, 255), 
+		     0 0 75px rgb(0, 153, 255);
+    	letter-spacing: 3px;
+    height: 50px;  
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #120205),
+        color-stop(1, #00FF00)
+        );
+    background-image: -o-linear-gradient(bottom, #120205 0%, #00FF00 100%);
+    background-image: -moz-linear-gradient(bottom, #120205 0%, #00FF00 100%);
+    background-image: -webkit-linear-gradient(bottom, #120205 0%, #00FF00 100%);
+    background-image: -ms-linear-gradient(bottom, #120205 0%, #00FF00 100%);
+    background-image: linear-gradient(to bottom, #120205 0%, #00FF00 100%);
+    color:#ffffff;
+    text-align:center;
+    font-size: 13px;
+    font-weight: bold;
+    left: 0;
+    right: 0;
+    background-size: 100%;
+}

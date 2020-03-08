@@ -5,18 +5,27 @@
  */
 package edu.slcc.asdv.beans;
 
+import edu.slcc.asdv.bl.JSONobj;
+import edu.slcc.asdv.bl.JsonSupplier;
+import static edu.slcc.asdv.bl.JsonSupplier.createJsonObjectForSupplier;
 import edu.slcc.asdv.bl.ProductsForSale;
 import edu.slcc.asdv.bl.UsersSingleton;
 import edu.slcc.asdv.bl.WarehouseSingleton;
 import edu.slcc.asdv.pojos.Item;
 import edu.slcc.asdv.pojos.Keyable;
+import java.io.StringWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import javax.inject.Named;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Destroyed;
 import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Observes;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
@@ -38,6 +47,7 @@ public class InitializationBean {
         ws = WarehouseSingleton.instantiateWarehouse();
         pfs = ws.getProducts();
         addToMenu();
+        createJsonPrintout();
     }
 
     public static WarehouseSingleton getWarehouse() {
@@ -116,12 +126,11 @@ public class InitializationBean {
 
     public void addToMenu() {
         Collection<Keyable> temp = pfs.findAll();
-
         temp.forEach(keyable -> {
             DefaultMenuItem menuItem = new DefaultMenuItem(((Item) keyable).getName());
             String key = ((Item) keyable).getId();
             menuItem.setCommand("#{function.menuChangeItem}");
-            menuItem.setParam("id" + menuId, key);
+            menuItem.setParam("id" + menuId++, key);
             switch (((Item) keyable).getCategory()) {
                 case "laptop":
                     laptops.addElement(menuItem);
@@ -136,7 +145,6 @@ public class InitializationBean {
                     tablets.addElement(menuItem);
                     break;
             }
-            menuId++;
         });
         compMenu.addElement(laptops);
         compMenu.addElement(desktops);
@@ -144,4 +152,17 @@ public class InitializationBean {
         mobileMenu.addElement(tablets);
     }
 
+    public void createJsonPrintout(){
+        ArrayList<LinkedHashMap<String, String>> allItems = JsonSupplier.createMapOfItems(pfs);
+        JsonObject j = JsonSupplier.createJsonObjectForSuppliers(allItems);
+        StringWriter strWtr = new StringWriter();
+        JsonWriter jsonWtr = Json.createWriter(strWtr);
+        jsonWtr.writeObject(j);
+        jsonWtr.close();
+        
+        JSONobj.readJASONdataUsingParser(strWtr.toString());
+        JsonObject o = createJsonObjectForSupplier(strWtr.toString());
+        System.out.println("----------------");
+        JSONobj.writeObjectModelToStream(o);
+    }
 }
